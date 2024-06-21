@@ -1,0 +1,27 @@
+<div class="sidebar flex flex-col bg-white fixed w-60 2xl:w-72 top-0 bottom-0" [class.open]="sideMenuOpen()">
+  <app-svg-icon name="close" class="close-btn" (click)="toggleSideMenu()" />
+  <div class="mb-auto p-4 2xl:p-6 max-h-[calc(100vh-170px)] overflow-y-auto">
+    <img [src]="logo" class="h-24 mx-auto" alt="{{ 'common.logoAlt' | translate }}">
+    <div class="mt-4 2md:mt-6">
+      <ul>
+        <li routerLinkActive="active">
+          <a class="menu-item py-3.5" [routerLink]="[routes.HOME]">
+            <app-svg-icon name="dashboard" />
+            <span class="ml-4"> {{ 'pageTitle.home' | translate }} </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="p-6 xl:p-8 2xl:px-12 2xl:py-10 mt-auto border-t border-grey-50">
+    <a class="flex menu-item py-3.5">
+      <app-svg-icon name="person" />
+      <span class="ml-3">{{ 'common.user'| translate }}</span>
+    </a>
+    <a class="flex menu-item pb-3.5" [routerLink]="[routes.LOGOUT]">
+      <app-svg-icon name="logout" />
+      <span class="ml-3"> {{ 'pageTitle.logout' | translate }} </span>
+    </a>
+  </div>
+</div>
+<div (click)="toggleSideMenu()" (keypress)="toggleSideMenu()" role="none" class="menu-overlay"></div>

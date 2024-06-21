@@ -1,0 +1,26 @@
+<div class="p-4 w-full">
+  <div class="flex justify-between items-center">
+    <h3 class="font-bold text-lg">Select Columns to Display</h3>
+    <app-svg-icon name="close" class="cursor-pointer " (click)="closeDialog()" />
+  </div>
+  <div class="p-2">
+    <ng-select class="w-full font-semibold text-secondary custom-select rounded" [multiple]="true" [clearable]="true"
+      [searchable]="true" [(ngModel)]="selectedOptions" appendTo="body" [items]="data.availableColumns"
+      [selectableGroup]="true" bindLabel="label" bindValue="key">
+      <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{ item.label }}
+      </ng-template>
+    </ng-select>
+  </div>
+
+  <div class="flex justify-end gap-2">
+    <app-vc-button [class]="{ 'common-btn primary-btn font-semibold font-base rounded-5' : true }"
+      (buttonTap)="saveConfig(this.data.tableLevel)">
+      {{ 'common.save' | translate }} {{'common.config' |translate}}
+    </app-vc-button>
+    <app-vc-button [class]="{ 'common-btn secondary-btn font-semibold font-base rounded-5' : true }"
+      (buttonTap)="clearConfig(this.data.tableLevel)">
+      {{ 'common.clear' |translate}} {{'common.config' |translate}}
+    </app-vc-button>
+  </div>
+</div>

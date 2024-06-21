@@ -1,0 +1,15 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" color="primary" backgroundColor="primary">
+  @for (tab of tabs;track tab; let tabIndex = $index) {
+  <mat-tab [label]="tab" class="bg-white">
+    <ng-template matTabContent>
+      @if (tabIndex === matTabs.DASHBOARD) {
+      <app-dashboard />
+      }@else if (tabIndex === matTabs.DYNAMIC_TABLE) {
+      <app-dynamic-table />
+      } @else if (tabIndex === matTabs.PIVOT_TABLE) {
+      <app-pivot-table />
+      }
+    </ng-template>
+  </mat-tab>
+  }
+</mat-tab-group>

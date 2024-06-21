@@ -1,0 +1,20 @@
+<div class="pt-4">
+  <div class="flex justify-end">
+    <app-vc-button [class]="{ 'bg-primary rounded p-1': true }" (buttonTap)="openDialog()">
+      <app-svg-icon name="settings" class="cursor-pointer text-white" />
+    </app-vc-button>
+  </div>
+  <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 xl:gap-6 2xl:gap-8 mt-4">
+    @for (item of filterData; track $index) {
+    <div class="bg-white shadow-2sm w-full p-4 lg:p-6 xl:p-8 2xl:p-10 rounded-10 text-center">
+      <p class="text-[15px] xl:text-base 2xl:text-xm font-semibold text-secondary">
+        {{ item.title }}
+      </p>
+      <p
+        class="text-3xl xl:text-[34px] 2xl:text-[28px] leading-[34px] xl:leading-[38px] 2xl:leading-[44px] font-bold text-blue-600 mt-3">
+        {{ item.counts }}
+      </p>
+    </div>
+    }
+  </div>
+</div>
