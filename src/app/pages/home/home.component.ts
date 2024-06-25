@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MAT_TABS } from '@constants/app.constants';
+import { TranslateModule } from '@ngx-translate/core';
 import { DashboardComponent } from '@pages/dashboard/dashboard.component';
 import { DynamicTableComponent } from '@pages/dynamic-table/dynamic-table.component';
 import { PivotTableComponent } from './pivot-table/pivot-table.component';
 
 const components = [PivotTableComponent, DynamicTableComponent, DashboardComponent];
-const modules = [MatTabsModule];
+const modules = [MatTabsModule, TranslateModule];
 
 @Component({
   selector: 'app-home',
@@ -20,5 +21,5 @@ const modules = [MatTabsModule];
 
 export class HomeComponent {
   readonly matTabs = MAT_TABS;
-  tabs = ['Dashboard', 'Table', 'Pivot Table'];
+  tabs = ['dashboard', 'table', 'pivotTable'];
 }

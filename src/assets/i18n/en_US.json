@@ -119,7 +119,10 @@
     "anonymous": "Anonymous",
     "type": "Type",
     "config": "Config",
-    "user": "User"
+    "user": "User",
+    "age": "Age",
+    "email": "Email",
+    "position": "Position"
   },
   "pageTitle": {
     "login": "Login",
@@ -179,16 +182,13 @@
     "uploadImage": "Choose a image or drag it here"
   },
   "dashboard": {
-    "totalUser": "Total Users",
-    "totalMember": "Total Members",
-    "totalArtefacts": "Total Artefacts",
-    "totalRoles": "Total Roles",
-    "totalCategory": "Total Categories",
-    "totalExhibition": "Total Exhibitions",
-    "totalDonation": "Total Donations",
-    "totalHeading": "Total Headings",
-    "totalArtist": "Total Artists",
-    "totalGalleries": "Total Galleries"
+    "widgetsConfig": "Widgets Config",
+    "columnsConfig": "Columns Config"
+  },
+  "home": {
+    "dashboard": "Dashboard",
+    "table": "Table",
+    "pivotTable": "Pivot Table"
   },
   "options": {
     "roles": {
@@ -207,7 +207,8 @@
     },
     "languages": {
       "en_US": "EN",
-      "de_CH": "DE"
+      "de_CH": "DE",
+      "it_IT": "IT"
     }
   }
 }

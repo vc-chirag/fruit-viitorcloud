@@ -59,6 +59,10 @@ export class SidebarComponent implements OnInit {
     return this.storageService.get(STORAGE.FULL_NAME);
   }
 
+  get selectedLanguage() {
+    return this.storageService.get(STORAGE.CURRENT_LANGUAGE_STATE_KEY);
+  }
+
   ngOnInit() {
     this.breadcrumbService.toggleSidebar
       .pipe(takeUntilDestroyed(this.#destroyRef))
@@ -72,6 +76,10 @@ export class SidebarComponent implements OnInit {
       .subscribe((event: NavigationEnd) => {
         this.navSetup(event.url);
       });
+  }
+
+  changeLanguage(lang: string) {
+    this.storageService.changeLanguage(lang);
   }
 
   getMenuType(url: string): string {

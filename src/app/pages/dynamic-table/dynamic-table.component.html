@@ -14,7 +14,7 @@
       @for (column of selectedColumns; track column) {
       <ng-container matColumnDef="{{column}}">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <span class="capitalize font-bold"> {{column}}</span>
+          <span class="capitalize font-bold"> {{'common.' +column | translate}}</span>
         </th>
         <td mat-cell *matCellDef="let element"
           (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
