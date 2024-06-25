@@ -5,12 +5,13 @@ import { MatSelectChange } from '@angular/material/select';
 import { SvgIconComponent } from '@layouts/svg-icon/svg-icon.component';
 import { DashboardCounts } from '@models/dashboard.model';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { TranslateModule } from '@ngx-translate/core';
 import { VcButtonComponent } from '@vc-libs/vc-button/vc-button.component';
 
 @Component({
   selector: 'app-widget-config',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, VcButtonComponent, NgSelectModule, SvgIconComponent],
+  imports: [FormsModule, ReactiveFormsModule, VcButtonComponent, NgSelectModule, SvgIconComponent, TranslateModule],
   templateUrl: './widget-config.component.html'
 })
 export class WidgetConfigComponent {

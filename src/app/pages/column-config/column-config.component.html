@@ -1,6 +1,6 @@
 <div class="p-4 w-full">
   <div class="flex justify-between items-center">
-    <h3 class="font-bold text-lg">Select Columns to Display</h3>
+    <h3 class="font-bold text-lg">{{ 'dashboard.columnsConfig' | translate }}</h3>
     <app-svg-icon name="close" class="cursor-pointer " (click)="closeDialog()" />
   </div>
   <div class="p-2">
@@ -16,11 +16,11 @@
   <div class="flex justify-end gap-2">
     <app-vc-button [class]="{ 'common-btn primary-btn font-semibold font-base rounded-5' : true }"
       (buttonTap)="saveConfig(this.data.tableLevel)">
-      {{ 'common.save' | translate }} {{'common.config' |translate}}
+      {{ 'common.save' | translate }}
     </app-vc-button>
     <app-vc-button [class]="{ 'common-btn secondary-btn font-semibold font-base rounded-5' : true }"
       (buttonTap)="clearConfig(this.data.tableLevel)">
-      {{ 'common.clear' |translate}} {{'common.config' |translate}}
+      {{ 'common.clear' |translate}}
     </app-vc-button>
   </div>
 </div>

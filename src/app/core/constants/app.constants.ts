@@ -2,7 +2,8 @@
 
 export const LANGUAGES = [
   { value: 'en_US', label: 'English', flagUrl: '/assets/images/flags/en.svg' },
-  { value: 'de_CH', label: 'German', flagUrl: '/assets/images/flags/de.svg' }
+  // { value: 'de_CH', label: 'German', flagUrl: '/assets/images/flags/de.svg' },
+  { value: 'it_IT', label: 'Italian', flagUrl: '/assets/images/flags/it.svg' }
 ] as const;
 
 export const APP = {

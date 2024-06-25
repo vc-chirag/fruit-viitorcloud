@@ -1,6 +1,6 @@
 <div class="p-4 w-[500px] max-w-full">
   <div class="flex justify-between">
-    <strong class="text-xl">Widgets config</strong>
+    <strong class="text-xl">{{'dashboard.widgetsConfig' | translate}}</strong>
     <app-vc-button [class]="{ 'p-0': true }" (buttonTap)="closeDialog()">
       <app-svg-icon name="close" class="cursor-pointer text-black" />
     </app-vc-button>
@@ -14,13 +14,13 @@
     </ng-select>
   </div>
   <div class="flex justify-end gap-3 mt-7">
-    <app-vc-button [class]="{ 'common-btn secondary-btn font-semibold rounded-5 min-w-[100px]': true }"
-      (buttonTap)="closeDialog()">
-      Cancel
-    </app-vc-button>
     <app-vc-button [class]="{ 'common-btn primary-btn font-semibold rounded-5 min-w-[100px]': true }"
       (buttonTap)="saveConfig()">
-      Save
+      {{ 'common.save' | translate }}
+    </app-vc-button>
+    <app-vc-button [class]="{ 'common-btn secondary-btn font-semibold rounded-5 min-w-[100px]': true }"
+      (buttonTap)="closeDialog()">
+      {{ 'common.cancel' | translate }}
     </app-vc-button>
   </div>
 </div>

@@ -14,6 +14,18 @@
     </div>
   </div>
   <div class="p-6 xl:p-8 2xl:px-12 2xl:py-10 mt-auto border-t border-grey-50">
+    <div class="p-2">
+      <ng-select class="custom-select" [(ngModel)]="selectedLanguage" placeholder="Select widgets" [clearable]="false"
+        appendTo="body" (change)="changeLanguage($event)">
+        @for (lang of languages; track $index) {
+        <ng-option [value]="lang.value">
+          <div class="flex">
+            <img class="mr-2 w-1/6 h-1/6" [src]="lang.flagUrl" alt="lang-icon" />{{ lang.label }}
+          </div>
+        </ng-option>
+        }
+      </ng-select>
+    </div>
     <a class="flex menu-item py-3.5">
       <app-svg-icon name="person" />
       <span class="ml-3">{{ 'common.user'| translate }}</span>

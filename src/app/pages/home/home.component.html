@@ -1,6 +1,6 @@
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" color="primary" backgroundColor="primary">
   @for (tab of tabs;track tab; let tabIndex = $index) {
-  <mat-tab [label]="tab" class="bg-white">
+  <mat-tab label="{{'home.' + tab | translate}}" class="bg-white">
     <ng-template matTabContent>
       @if (tabIndex === matTabs.DASHBOARD) {
       <app-dashboard />
