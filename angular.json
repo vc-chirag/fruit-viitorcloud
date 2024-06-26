@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "vc-dynamic-widget": {
+    "fruit-viitorcloud": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -27,7 +27,7 @@
             "customWebpackConfig": {
               "path": "src/custom-webpack.config.ts"
             },
-            "outputPath": "dist/vc-dynamic-widget",
+            "outputPath": "dist/fruit-viitorcloud",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -42,6 +42,11 @@
                 "glob": "robots.txt",
                 "input": "src/",
                 "output": "./"
+              },
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
               }
             ],
             "styles": [
@@ -173,19 +178,19 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "vc-dynamic-widget:build:production"
+              "buildTarget": "fruit-viitorcloud:build:production"
             },
             "staging": {
-              "buildTarget": "vc-dynamic-widget:build:staging"
+              "buildTarget": "fruit-viitorcloud:build:staging"
             },
             "uat": {
-              "buildTarget": "vc-dynamic-widget:build:uat"
+              "buildTarget": "fruit-viitorcloud:build:uat"
             },
             "demo": {
-              "buildTarget": "vc-dynamic-widget:build:demo"
+              "buildTarget": "fruit-viitorcloud:build:demo"
             },
             "development": {
-              "buildTarget": "vc-dynamic-widget:build:development"
+              "buildTarget": "fruit-viitorcloud:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -193,7 +198,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "vc-dynamic-widget:build"
+            "buildTarget": "fruit-viitorcloud:build"
           }
         },
         "test": {
