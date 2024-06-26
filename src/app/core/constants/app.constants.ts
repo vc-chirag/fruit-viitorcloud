@@ -15,7 +15,7 @@ export const APP = {
   LOGOUT: 'logout',
   MIN_SEARCH_LEN: 4,
   TIMEOUT: 0,
-  LANGUAGE: LANGUAGES[0].value,
+  LANGUAGE: LANGUAGES[1].value,
   IMAGE_TYPE: ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'],
   MAX_IMAGE_SIZE: 5242880, // 5MB
   CURRENCY_SYMBOL: '$',
