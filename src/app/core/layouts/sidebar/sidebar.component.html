@@ -15,8 +15,8 @@
   </div>
   <div class="p-6 xl:p-8 2xl:px-12 2xl:py-10 mt-auto border-t border-grey-50">
     <div class="p-2">
-      <ng-select class="custom-select" [(ngModel)]="selectedLanguage" placeholder="Select widgets" [clearable]="false"
-        appendTo="body" (change)="changeLanguage($event)">
+      <ng-select class="custom-select" [(ngModel)]="currentLanguage" [clearable]="false"
+        (change)="changeLanguage($event)">
         @for (lang of languages; track $index) {
         <ng-option [value]="lang.value">
           <div class="flex">

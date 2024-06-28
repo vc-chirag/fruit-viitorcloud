@@ -44,6 +44,8 @@ export class SidebarComponent implements OnInit {
     settings: false
   });
 
+  currentLanguage = '';
+
   readonly languages = LANGUAGES;
   readonly routes = ROUTES;
   readonly menuType = MENU_TYPE;
@@ -59,9 +61,6 @@ export class SidebarComponent implements OnInit {
     return this.storageService.get(STORAGE.FULL_NAME);
   }
 
-  get selectedLanguage() {
-    return this.storageService.get(STORAGE.CURRENT_LANGUAGE_STATE_KEY);
-  }
 
   ngOnInit() {
     this.breadcrumbService.toggleSidebar
@@ -76,6 +75,8 @@ export class SidebarComponent implements OnInit {
       .subscribe((event: NavigationEnd) => {
         this.navSetup(event.url);
       });
+
+    this.currentLanguage = this.storageService.get(STORAGE.CURRENT_LANGUAGE_STATE_KEY);
   }
 
   changeLanguage(lang: string) {

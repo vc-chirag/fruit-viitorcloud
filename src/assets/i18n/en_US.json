@@ -122,7 +122,9 @@
     "user": "User",
     "age": "Age",
     "email": "Email",
-    "position": "Position"
+    "position": "Position",
+    "customerId": "Customer ID",
+    "noData": "Data not found"
   },
   "pageTitle": {
     "login": "Login",
@@ -184,6 +186,19 @@
   "dashboard": {
     "widgetsConfig": "Widgets Config",
     "columnsConfig": "Columns Config"
+  },
+  "order": {
+    "customerId": "Customer ID",
+    "orderId": "Order ID",
+    "orderDate": "Order Date",
+    "price": "Price"
+  },
+  "item": {
+    "orderId": "Order ID",
+    "itemId": "Item ID",
+    "productName": "Product Name",
+    "quantity": "Quantity",
+    "price": "Price"
   },
   "home": {
     "dashboard": "Dashboard",

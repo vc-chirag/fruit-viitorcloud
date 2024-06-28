@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DEFAULT_COLS, TABLE_LEVELS } from '@constants/app.constants';
+import { TABLE_LEVELS } from '@constants/app.constants';
 import { STORAGE } from '@constants/storage.constant';
 import { SvgIconComponent } from '@layouts/svg-icon/svg-icon.component';
 import { ColumnConfigDialogData } from '@models/common.model';
@@ -45,8 +45,9 @@ export class ColumnConfigComponent {
 
   clearConfig(level: number) {
     const storageKey = this.getStorageKey(level);
-    this.storageService.set(storageKey, DEFAULT_COLS);
-    this.data.selectedColumns = DEFAULT_COLS;
+    const defaultCols = structuredClone(this.data.availableColumns).map(col => col.key);
+    this.storageService.set(storageKey, defaultCols);
+    this.data.selectedColumns = defaultCols;
 
     const dialogData = {
       selectedColumns: this.data.selectedColumns,
