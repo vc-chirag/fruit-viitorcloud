@@ -10,21 +10,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { APP, AVAILABLE_COLUMNS, DEFAULT_COLS, OUTER_DATA_SOURCE, TABLE_LEVELS } from '@constants/app.constants';
+import { APP, CUSTOMER_COLUMNS, CUSTOMER_DATA_SOURCE, ITEM_COLUMNS, ORDER_COLUMNS, ORDER_DATA_SOURCE, TABLE_LEVELS } from '@constants/app.constants';
 import { STORAGE } from '@constants/storage.constant';
 import { SvgIconComponent } from '@layouts/svg-icon/svg-icon.component';
+import { CustomerElement, OrderElement } from '@models/dashboard.model';
 import { ColumnConfigComponent } from '@pages/column-config/column-config.component';
 import { StorageService } from '@services/storage.service';
 import { VcButtonComponent } from '@vc-libs/vc-button/vc-button.component';
 import { VcInputComponent } from '@vc-libs/vc-input/vc-input.component';
 import { InnerTableComponent } from './inner-table/inner-table.component';
-
-export interface DataElement {
-  name: string;
-  age: number;
-  address: string;
-  email: string;
-}
 
 const modules = [MatTableModule, MatCheckboxModule, MatExpansionModule, MatPaginatorModule, MatSortModule, TranslateModule, FormsModule];
 const components = [VcButtonComponent, SvgIconComponent, VcInputComponent, InnerTableComponent];
@@ -49,12 +43,14 @@ export class DynamicTableComponent implements OnInit, AfterViewInit {
   selectedInnerColumns: string[] = [];
   nestedSelectedInnerColumns: string[] = [];
 
-  outerDataSource = new MatTableDataSource(OUTER_DATA_SOURCE);
-  expandedElement: DataElement | null = null;
+  outerDataSource = new MatTableDataSource(CUSTOMER_DATA_SOURCE);
+  expandedElement: OrderElement | null = null;
 
-  readonly availableColumns = AVAILABLE_COLUMNS;
+  readonly availableColumns = CUSTOMER_COLUMNS;
   readonly tableLevels = TABLE_LEVELS;
   readonly pageSizeOptions = APP.PAGE_OPTIONS;
+
+  innerDataSource = new MatTableDataSource<OrderElement>(ORDER_DATA_SOURCE);
 
   constructor(
     private storageService: StorageService,
@@ -62,14 +58,38 @@ export class DynamicTableComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this.selectedColumns = this.storageService.get(STORAGE.SELECTED_COLS) || DEFAULT_COLS;
-    this.selectedInnerColumns = this.storageService.get(STORAGE.INNER_COLS) || DEFAULT_COLS;
-    this.nestedSelectedInnerColumns = this.storageService.get(STORAGE.NESTED_INNER_COLS) || DEFAULT_COLS;
+    this.setColumns();
   }
 
   ngAfterViewInit() {
     this.setPagination();
     this.setSorting();
+  }
+
+  setColumns() {
+    this.selectedColumns = this.storageService.get(STORAGE.SELECTED_COLS) || this.getColumns(this.tableLevels.ONE);
+    this.selectedInnerColumns = this.storageService.get(STORAGE.INNER_COLS) || this.getColumns(this.tableLevels.TWO);
+    this.nestedSelectedInnerColumns = this.storageService.get(STORAGE.NESTED_INNER_COLS) || this.getColumns(this.tableLevels.THREE);
+  }
+
+  getColumns(tableLevel: number) {
+    switch (tableLevel) {
+      case this.tableLevels.ONE:
+        return CUSTOMER_COLUMNS.map(col => col.key);
+      case this.tableLevels.TWO:
+        return ORDER_COLUMNS.map(col => col.key);
+      case this.tableLevels.THREE:
+        return ITEM_COLUMNS.map(col => col.key);
+      default:
+        return [];
+    }
+  }
+
+  setFilteredData(ele: CustomerElement) {
+    if (ele?.customerId) {
+      const filterData = ORDER_DATA_SOURCE.filter(res => res.customerId === ele?.customerId);
+      this.innerDataSource = new MatTableDataSource(filterData);
+    }
   }
 
   setSorting() {
@@ -85,16 +105,20 @@ export class DynamicTableComponent implements OnInit, AfterViewInit {
     this.outerDataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  getColumnDisplayName(columnProperty: string): string {
-    const column = this.availableColumns.find(col => col.key === columnProperty);
-    return column ? column.label : columnProperty;
-  }
-
   openDialog(tableLevel: number) {
     const selectedColumns = this.getSelectedColumns(tableLevel);
+    let columns;
+    if (tableLevel === this.tableLevels.ONE) {
+      columns = CUSTOMER_COLUMNS;
+    } else if (tableLevel === this.tableLevels.TWO) {
+      columns = ORDER_COLUMNS;
+    } else {
+      columns = ITEM_COLUMNS;
+    }
+
     const dialogRef = this.dialog.open(ColumnConfigComponent, {
       data: {
-        availableColumns: this.availableColumns,
+        availableColumns: columns,
         selectedColumns: structuredClone(selectedColumns),
         tableLevel
       },

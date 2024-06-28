@@ -14,10 +14,10 @@
       @for (column of selectedColumns; track column) {
       <ng-container matColumnDef="{{column}}">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <span class="capitalize font-bold"> {{'common.' +column | translate}}</span>
+          <span class="capitalize font-bold"> {{'common.' + column | translate}}</span>
         </th>
         <td mat-cell *matCellDef="let element"
-          (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+          (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation(); setFilteredData(element)">
           {{element[column]}} </td>
       </ng-container>
       }
@@ -26,7 +26,7 @@
         <td mat-cell *matCellDef="let element" [attr.colspan]="selectedColumns.length">
           <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
             <app-inner-table (openDialog)="openDialog($event)" [selectedInnerColumns]="selectedInnerColumns"
-              [nestedSelectedInnerColumns]="nestedSelectedInnerColumns" />
+              [nestedSelectedInnerColumns]="nestedSelectedInnerColumns" [innerDataSource]="innerDataSource" />
           </div>
         </td>
       </ng-container>
