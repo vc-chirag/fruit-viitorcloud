@@ -10,5 +10,7 @@ export const STORAGE = {
   SELECTED_COLS: 'sc',
   INNER_COLS: 'ic',
   NESTED_INNER_COLS: 'nic',
-  COUNT_STATE: 'cs'
+  COUNT_STATE: 'cs',
+  QUERY_COL: 'qc',
+  TAB_CONFIG: 'tc'
 };

@@ -20,6 +20,18 @@ export interface ColumnConfigDialogData {
   availableColumns: TableColumn[];
   selectedColumns: string[];
   tableLevel: number;
+  isQuery?: boolean;
+  storageKey?: string;
+}
+
+export interface AddNewTabDialogData extends ColumnConfigDialogData {
+  table: string
+}
+
+export interface SubTabs {
+  table: string;
+  tabName: string;
+  columns: string[];
 }
 
 export interface Entity {

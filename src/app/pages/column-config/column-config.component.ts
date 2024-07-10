@@ -32,8 +32,12 @@ export class ColumnConfigComponent {
   ) { }
 
   saveConfig(level: number) {
-    const storageKey = this.getStorageKey(level);
-    this.storageService.set(storageKey, this.selectedOptions);
+    if (this.data.isQuery) {
+      this.storageService.set(this.data.storageKey, this.selectedOptions);
+    } else {
+      const storageKey = this.getStorageKey(level);
+      this.storageService.set(storageKey, this.selectedOptions);
+    }
 
     const dialogData = {
       selectedColumns: this.selectedOptions,
@@ -44,10 +48,15 @@ export class ColumnConfigComponent {
   }
 
   clearConfig(level: number) {
-    const storageKey = this.getStorageKey(level);
-    const defaultCols = structuredClone(this.data.availableColumns).map(col => col.key);
-    this.storageService.set(storageKey, defaultCols);
-    this.data.selectedColumns = defaultCols;
+    if (this.data.isQuery) {
+      this.storageService.set(this.data.storageKey, this.data.availableColumns);
+      this.data.selectedColumns = this.data.availableColumns.map((col) => col.key);
+    } else {
+      const storageKey = this.getStorageKey(level);
+      const defaultCols = structuredClone(this.data.availableColumns).map(col => col.key);
+      this.storageService.set(storageKey, defaultCols);
+      this.data.selectedColumns = defaultCols;
+    }
 
     const dialogData = {
       selectedColumns: this.data.selectedColumns,

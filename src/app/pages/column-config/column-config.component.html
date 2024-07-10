@@ -8,7 +8,7 @@
       [searchable]="true" [(ngModel)]="selectedOptions" appendTo="body" [items]="data.availableColumns"
       [selectableGroup]="true" bindLabel="label" bindValue="key">
       <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{ item.label }}
+        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{ item.label | translate }}
       </ng-template>
     </ng-select>
   </div>

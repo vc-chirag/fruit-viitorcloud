@@ -1,0 +1,34 @@
+<div class="p-4 w-full">
+  <div class="flex justify-between items-center">
+    <h3 class="font-bold text-lg">{{ 'dashboard.columnsConfig' | translate }}</h3>
+    <app-svg-icon name="close" class="cursor-pointer " (click)="closeDialog()" />
+  </div>
+  <div class="p-2">
+    <div>
+      <label class="field-lbl" for="email" [ngClass]="{ 'field-error' :  tabName.touched && tabName.invalid }">
+        {{ 'common.tabName' | translate }} <span class="text-red">*</span>
+      </label>
+      <app-vc-input [customClass]="{ 'form-field' : true, 'field-error' : tabName.touched && tabName.invalid }"
+        type="text" name="tabName" [required]="true" ngModel #tabName="ngModel" />
+    </div>
+    <div>
+      <label class="field-lbl" for="email" [ngClass]="{ 'field-error' :  tabName.touched && tabName.invalid }">
+        {{ 'common.columns' | translate }} <span class="text-red">*</span>
+      </label>
+      <ng-select class="w-full font-semibold text-secondary custom-select rounded" [multiple]="true" [clearable]="true"
+        [searchable]="true" [(ngModel)]="selectedOptions" appendTo="body" [items]="data.availableColumns"
+        [selectableGroup]="true" bindLabel="label" bindValue="key">
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+          <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{ item.label | translate }}
+        </ng-template>
+      </ng-select>
+    </div>
+  </div>
+
+  <div class="flex justify-end gap-2">
+    <app-vc-button [class]="{ 'common-btn primary-btn font-semibold font-base rounded-5' : true }"
+      (buttonTap)="saveConfig(tabName.value)">
+      {{ 'common.save' | translate }}
+    </app-vc-button>
+  </div>
+</div>

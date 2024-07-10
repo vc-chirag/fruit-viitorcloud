@@ -12,12 +12,15 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { TranslateModule } from '@ngx-translate/core';
 import { filter } from 'rxjs';
 
-import { LANGUAGES } from '@constants/app.constants';
+import { MatDialog } from '@angular/material/dialog';
+import { LANGUAGES, QUERY_COLUMNS } from '@constants/app.constants';
 import { MENU_TYPE } from '@constants/app.enums';
 import { ROUTES } from '@constants/routes.enums';
 import { STORAGE } from '@constants/storage.constant';
 import { environment } from '@environment/environment';
 import { SvgIconComponent } from '@layouts/svg-icon/svg-icon.component';
+import { SubTabs } from '@models/common.model';
+import { AddNewTabComponent } from '@pages/add-new-tab/add-new-tab.component';
 import { BreadcrumbService } from '@services/breadcrumb.service';
 import { StorageService } from '@services/storage.service';
 
@@ -40,6 +43,7 @@ export class SidebarComponent implements OnInit {
   #destroyRef = inject(DestroyRef);
 
   sideMenuOpen = signal(false);
+  subTabs: SubTabs[] = [];
   menuStates = signal<Record<`${MENU_TYPE}`, boolean>>({
     settings: false
   });
@@ -54,7 +58,8 @@ export class SidebarComponent implements OnInit {
   constructor(
     private storageService: StorageService,
     private breadcrumbService: BreadcrumbService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   get fullName() {
@@ -77,6 +82,15 @@ export class SidebarComponent implements OnInit {
       });
 
     this.currentLanguage = this.storageService.get(STORAGE.CURRENT_LANGUAGE_STATE_KEY);
+    this.setNestedTabs();
+  }
+
+  setNestedTabs() {
+    const tabConfigs = this.storageService.get(STORAGE.TAB_CONFIG);
+    if (tabConfigs) {
+      const unfilteredTabs = JSON.parse(tabConfigs);
+      this.subTabs = unfilteredTabs.filter((tab) => tab.table === 'registry');
+    }
   }
 
   changeLanguage(lang: string) {
@@ -113,5 +127,24 @@ export class SidebarComponent implements OnInit {
       this.menuStates()[key] =
         key === menuType ? !this.menuStates()[key] : false;
     }
+  }
+
+  addNewTable() {
+    const selectedColumns = this.storageService.get(STORAGE.QUERY_COL);
+    const dialogRef = this.dialog.open(AddNewTabComponent,
+      {
+        data: {
+          availableColumns: QUERY_COLUMNS,
+          selectedColumns: structuredClone(selectedColumns),
+          table: 'registry'
+        },
+        disableClose: true,
+        width: '500px'
+      })
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.setNestedTabs();
+      }
+    })
   }
 }
