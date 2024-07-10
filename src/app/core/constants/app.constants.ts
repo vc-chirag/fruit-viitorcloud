@@ -93,13 +93,928 @@ export const ORDER_COLUMNS = [
   { label: 'Price', key: 'price' }
 ];
 
+export const ORDER_COL = [
+  {
+    key: "Chiave",
+    label: "order.chiave",
+    sortable: true
+  },
+  {
+    key: "NumDoc",
+    label: "order.numDoc",
+    sortable: true
+  },
+  {
+    key: "SerieDoc",
+    label: "order.serieDoc",
+    sortable: true
+  },
+  {
+    key: "AnnoDoc",
+    label: "order.annoDoc",
+    sortable: true
+  },
+  {
+    key: "MeseDoc",
+    label: "order.meseDoc",
+    sortable: true
+  },
+  {
+    key: "RigaDoc",
+    label: "order.rigaDoc",
+    sortable: true
+  },
+  {
+    key: "DataDoc",
+    label: "order.dataDoc",
+    sortable: true
+  },
+  {
+    key: "Segno",
+    label: "order.segno",
+    sortable: true
+  },
+  {
+    key: "CodAnagra",
+    label: "order.codAnagra",
+    sortable: true
+  },
+  {
+    key: "CodDestDiv",
+    label: "order.codDestDiv",
+    sortable: true
+  },
+  {
+    key: "DescrDestDiv",
+    label: "order.descrDestDiv",
+    sortable: true
+  },
+  {
+    key: "IndirizzoDestDiv",
+    label: "order.indirizzoDestDiv",
+    sortable: true
+  },
+  {
+    key: "CittaDestDiv",
+    label: "order.cittaDestDiv",
+    sortable: true
+  },
+  {
+    key: "DescrProvDestDiv",
+    label: "order.descrProvDestDiv",
+    sortable: true
+  },
+  {
+    key: "DescrNazioneDestDiv",
+    label: "order.DdscrNazioneDestDiv",
+    sortable: true
+  },
+  {
+    key: "CodAgente",
+    label: "order.codAgente",
+    sortable: true
+  },
+  {
+    key: "CodArtico",
+    label: "order.codArtico",
+    sortable: true
+  },
+  {
+    key: "DescrArtico",
+    label: "order.descrArtico",
+    sortable: true
+  },
+  {
+    key: "NoteRiga",
+    label: "order.noteRiga",
+    sortable: true
+  },
+  {
+    key: "UM",
+    label: "order.uM",
+    sortable: true
+  },
+  {
+    key: "DescrGruppo",
+    label: "order.descrGruppo",
+    sortable: true
+  },
+  {
+    key: "DescrSottogruppo",
+    label: "order.descrSottogruppo",
+    sortable: true
+  },
+  {
+    key: "DescrCategoria",
+    label: "order.descrCategoria",
+    sortable: true
+  },
+  {
+    key: "Colli",
+    label: "order.colli",
+    sortable: true
+  },
+  {
+    key: "Qta",
+    label: "order.qta",
+    sortable: true
+  },
+  {
+    key: "Prezzo",
+    label: "order.prezzo",
+    sortable: true
+  },
+  {
+    key: "ValoreRiga",
+    label: "order.valoreRiga",
+    sortable: true
+  },
+  {
+    key: "ValoreIVA",
+    label: "order.valoreIVA",
+    sortable: true
+  },
+  {
+    key: "AliquotaIVA",
+    label: "order.aliquotaIVA",
+    sortable: true
+  },
+  {
+    key: "Sconto1",
+    label: "order.sconto1",
+    sortable: true
+  },
+  {
+    key: "Sconto2",
+    label: "order.sconto2",
+    sortable: true
+  },
+  {
+    key: "Sconto3",
+    label: "order.sconto3",
+    sortable: true
+  },
+  {
+    key: "ScontoPagamento",
+    label: "order.scontoPagamento",
+    sortable: true
+  },
+  {
+    key: "ScontoTestata",
+    label: "order.scontoTestata",
+    sortable: true
+  },
+  {
+    key: "DescrIVA",
+    label: "order.descrIVA",
+    sortable: true
+  },
+  {
+    key: "PercProv1",
+    label: "order.percProv1",
+    sortable: true
+  },
+  {
+    key: "PercProv2",
+    label: "order.percProv2",
+    sortable: true
+  },
+  {
+    key: "ValoreProv1",
+    label: "order.valoreProv1",
+    sortable: true
+  },
+  {
+    key: "ValoreProv2",
+    label: "order.valoreProv2",
+    sortable: true
+  },
+  {
+    key: "NumFatt",
+    label: "order.numFatt",
+    sortable: true
+  },
+  {
+    key: "SerieFatt",
+    label: "order.serieFatt",
+    sortable: true
+  },
+  {
+    key: "AnnoFatt",
+    label: "order.annoFatt",
+    sortable: true
+  },
+  {
+    key: "NumDDT",
+    label: "order.numDDT",
+    sortable: true
+  },
+  {
+    key: "SerieDDT",
+    label: "order.serieDDT",
+    sortable: true
+  },
+  {
+    key: "AnnoDDT",
+    label: "order.annoDDT",
+    sortable: true
+  },
+  {
+    key: "CodGruppo",
+    label: "order.codGruppo",
+    sortable: true
+  },
+  {
+    key: "CodSottogruppo",
+    label: "order.codSottogruppo",
+    sortable: true
+  },
+  {
+    key: "CodIVA",
+    label: "order.codIVA",
+    sortable: true
+  },
+  {
+    key: "CodCategoria",
+    label: "order.codCategoria",
+    sortable: true
+  }
+];
+
+export const REGISTRY_COL = [
+  {
+    key: "codanagra",
+    label: "registry.codanagra",
+    sortable: true
+  },
+  {
+    key: "tipo",
+    label: "registry.tipo",
+    sortable: true
+  },
+  {
+    key: "descranagra",
+    label: "registry.descranagra",
+    sortable: true
+  },
+  {
+    key: "piva",
+    label: "registry.piva",
+    sortable: true
+  },
+  {
+    key: "cf",
+    label: "registry.cf",
+    sortable: true
+  },
+  {
+    key: "isonazione",
+    label: "registry.isonazione",
+    sortable: true
+  },
+  {
+    key: "descrnazione",
+    label: "registry.descrnazione",
+    sortable: true
+  },
+  {
+    key: "cap",
+    label: "registry.cap",
+    sortable: true
+  },
+  {
+    key: "citta",
+    label: "registry.citta",
+    sortable: true
+  },
+  {
+    key: "descrprovincia",
+    label: "registry.descrprovincia",
+    sortable: true
+  },
+  {
+    key: "indirizzo",
+    label: "registry.indirizzo",
+    sortable: true
+  },
+  {
+    key: "telefono",
+    label: "registry.telefono ",
+    sortable: true
+  },
+  {
+    key: "telefono2",
+    label: "registry.telefono2",
+    sortable: true
+  },
+  {
+    key: "mail",
+    label: "registry.mail",
+    sortable: true
+  },
+  {
+    key: "mail2",
+    label: "registry.mail2",
+    sortable: true
+  }
+];
+
+export const DDT_OUT_COL = [
+  {
+    key: "Chiave",
+    label: "ddt.chiave",
+    sortable: true
+  },
+  {
+    key: "NumDoc",
+    label: "ddt.numDoc",
+    sortable: true
+  },
+  {
+    key: "SerieDoc",
+    label: "ddt.serieDoc",
+    sortable: true
+  },
+  {
+    key: "AnnoDoc",
+    label: "ddt.annoDoc",
+    sortable: true
+  },
+  {
+    key: "MeseDoc",
+    label: "ddt.meseDoc",
+    sortable: true
+  },
+  {
+    key: "RigaDoc",
+    label: "ddt.rigaDoc",
+    sortable: true
+  },
+  {
+    key: "DataDoc",
+    label: "ddt.dataDoc",
+    sortable: true
+  },
+  {
+    key: "Segno",
+    label: "ddt.segno",
+    sortable: true
+  },
+  {
+    key: "CodAnagra",
+    label: "ddt.codAnagra",
+    sortable: true
+  },
+  {
+    key: "CodDestDiv",
+    label: "ddt.codDestDiv",
+    sortable: true
+  },
+  {
+    key: "DescrDestDiv",
+    label: "ddt.descrDestDiv",
+    sortable: true
+  },
+  {
+    key: "IndirizzoDestDiv",
+    label: "ddt.indirizzoDestDiv",
+    sortable: true
+  },
+  {
+    key: "CittaDestDiv",
+    label: "ddt.cittaDestDiv",
+    sortable: true
+  },
+  {
+    key: "DescrProvDestDiv",
+    label: "ddt.descrProvDestDiv",
+    sortable: true
+  },
+  {
+    key: "DescrNazioneDestDiv",
+    label: "ddt.descrNazioneDestDiv",
+    sortable: true
+  },
+  {
+    key: "CodAgente",
+    label: "ddt.codAgente",
+    sortable: true
+  },
+  {
+    key: "CodArtico",
+    label: "ddt.codArtico",
+    sortable: true
+  },
+  {
+    key: "DescrArtico",
+    label: "ddt.descrArtico",
+    sortable: true
+  },
+  {
+    key: "NoteRiga",
+    label: "ddt.noteRiga",
+    sortable: true
+  },
+  {
+    key: "UM",
+    label: "ddt.um",
+    sortable: true
+  },
+  {
+    key: "DescrGruppo",
+    label: "ddt.descrGruppo",
+    sortable: true
+  },
+  {
+    key: "DescrSottogruppo",
+    label: "ddt.descrSottogruppo",
+    sortable: true
+  },
+  {
+    key: "DescrCategoria",
+    label: "ddt.descrCategoria",
+    sortable: true
+  },
+  {
+    key: "Colli",
+    label: "ddt.colli",
+    sortable: true
+  },
+  {
+    key: "Qta",
+    label: "ddt.qta",
+    sortable: true
+  },
+  {
+    key: "Prezzo",
+    label: "ddt.prezzo",
+    sortable: true
+  },
+  {
+    key: "ValoreRiga",
+    label: "ddt.valoreRiga",
+    sortable: true
+  },
+  {
+    key: "ValoreIVA",
+    label: "ddt.valoreIVA",
+    sortable: true
+  },
+  {
+    key: "AliquotaIVA",
+    label: "ddt.aliquotaIVA",
+    sortable: true
+  },
+  {
+    key: "Sconto1",
+    label: "ddt.sconto1",
+    sortable: true
+  },
+  {
+    key: "Sconto2",
+    label: "ddt.sconto2",
+    sortable: true
+  },
+  {
+    key: "Sconto3",
+    label: "ddt.sconto3",
+    sortable: true
+  },
+  {
+    key: "ScontoPagamento",
+    label: "ddt.scontoPagamento",
+    sortable: true
+  },
+  {
+    key: "ScontoTestata",
+    label: "ddt.scontoTestata",
+    sortable: true
+  },
+  {
+    key: "DescrIVA",
+    label: "ddt.descrIVA",
+    sortable: true
+  },
+  {
+    key: "PercProv1",
+    label: "ddt.percProv1",
+    sortable: true
+  },
+  {
+    key: "PercProv2",
+    label: "ddt.percProv2",
+    sortable: true
+  },
+  {
+    key: "ValoreProv1",
+    label: "ddt.valoreProv1",
+    sortable: true
+  },
+  {
+    key: "ValoreProv2",
+    label: "ddt.valoreProv2",
+    sortable: true
+  },
+  {
+    key: "NumFatt",
+    label: "ddt.numFatt",
+    sortable: true
+  },
+  {
+    key: "SerieFatt",
+    label: "ddt.serieFatt",
+    sortable: true
+  },
+  {
+    key: "AnnoFatt",
+    label: "ddt.annoFatt",
+    sortable: true
+  },
+  {
+    key: "NumOrdine",
+    label: "ddt.numOrdine",
+    sortable: true
+  },
+  {
+    key: "SerieOrdine",
+    label: "ddt.serieOrdine",
+    sortable: true
+  },
+  {
+    key: "AnnoOrdine",
+    label: "ddt.annoOrdine",
+    sortable: true
+  },
+  {
+    key: "CodGruppo",
+    label: "ddt.codGruppo",
+    sortable: true
+  },
+  {
+    key: "CodSottogruppo",
+    label: "ddt.codSottogruppo",
+    sortable: true
+  },
+  {
+    key: "CodIVA",
+    label: "ddt.codIVA",
+    sortable: true
+  },
+  {
+    key: "CodCategoria",
+    label: "ddt.codCategoria",
+    sortable: true
+  }
+];
+
+export const INVOICE_COL = [
+  {
+    key: "Chiave",
+    label: "ddt.chiave",
+    sortable: true
+  },
+  {
+    key: "NumDoc",
+    label: "ddt.numDoc",
+    sortable: true
+  },
+  {
+    key: "SerieDoc",
+    label: "ddt.serieDoc",
+    sortable: true
+  },
+  {
+    key: "AnnoDoc",
+    label: "ddt.annoDoc",
+    sortable: true
+  },
+  {
+    key: "MeseDoc",
+    label: "ddt.meseDoc",
+    sortable: true
+  },
+  {
+    key: "RigaDoc",
+    label: "ddt.rigaDoc",
+    sortable: true
+  },
+  {
+    key: "DataDoc",
+    label: "ddt.dataDoc",
+    sortable: true
+  },
+  {
+    key: "DataCompetenza",
+    label: "ddt.dataCompetenza",
+    sortable: true
+  },
+  {
+    key: "Segno",
+    label: "ddt.segno",
+    sortable: true
+  },
+  {
+    key: "CodAnagra",
+    label: "ddt.codAnagra",
+    sortable: true
+  },
+  {
+    key: "CodDestDiv",
+    label: "ddt.codDestDiv",
+    sortable: true
+  },
+  {
+    key: "DescrDestDiv",
+    label: "ddt.descrDestDiv",
+    sortable: true
+  },
+  {
+    key: "IndirizzoDestDiv",
+    label: "ddt.indirizzoDestDiv",
+    sortable: true
+  },
+  {
+    key: "CittaDestDiv",
+    label: "ddt.cittaDestDiv",
+    sortable: true
+  },
+  {
+    key: "DescrProvDestDiv",
+    label: "ddt.descrProvDestDiv",
+    sortable: true
+  },
+  {
+    key: "DescrNazioneDestDiv",
+    label: "ddt.descrNazioneDestDiv",
+    sortable: true
+  },
+  {
+    key: "CodAgente",
+    label: "ddt.codAgente",
+    sortable: true
+  },
+  {
+    key: "CodArtico",
+    label: "ddt.codArtico",
+    sortable: true
+  },
+  {
+    key: "DescrArtico",
+    label: "ddt.descrArtico",
+    sortable: true
+  },
+  {
+    key: "NoteRiga",
+    label: "ddt.noteRiga",
+    sortable: true
+  },
+  {
+    key: "UM",
+    label: "ddt.um",
+    sortable: true
+  },
+  {
+    key: "DescrGruppo",
+    label: "ddt.descrGruppo",
+    sortable: true
+  },
+  {
+    key: "DescrSottogruppo",
+    label: "ddt.descrSottogruppo",
+    sortable: true
+  },
+  {
+    key: "DescrCategoria",
+    label: "ddt.descrCategoria",
+    sortable: true
+  },
+  {
+    key: "Colli",
+    label: "ddt.colli",
+    sortable: true
+  },
+  {
+    key: "Qta",
+    label: "ddt.qta",
+    sortable: true
+  },
+  {
+    key: "Prezzo",
+    label: "ddt.prezzo",
+    sortable: true
+  },
+  {
+    key: "ValoreRiga",
+    label: "ddt.valoreRiga",
+    sortable: true
+  },
+  {
+    key: "ValoreIVA",
+    label: "ddt.valoreIVA",
+    sortable: true
+  },
+  {
+    key: "AliquotaIVA",
+    label: "ddt.aliquotaIVA",
+    sortable: true
+  },
+  {
+    key: "Sconto1",
+    label: "ddt.sconto1",
+    sortable: true
+  },
+  {
+    key: "Sconto2",
+    label: "ddt.sconto2",
+    sortable: true
+  },
+  {
+    key: "Sconto3",
+    label: "ddt.sconto3",
+    sortable: true
+  },
+  {
+    key: "ScontoPagamento",
+    label: "ddt.scontoPagamento",
+    sortable: true
+  },
+  {
+    key: "ScontoTestata",
+    label: "ddt.scontoTestata",
+    sortable: true
+  },
+  {
+    key: "DescrIVA",
+    label: "ddt.descrIVA",
+    sortable: true
+  },
+  {
+    key: "PercProv1",
+    label: "ddt.percProv1",
+    sortable: true
+  },
+  {
+    key: "PercProv2",
+    label: "ddt.percProv2",
+    sortable: true
+  },
+  {
+    key: "ValoreProv1",
+    label: "ddt.valoreProv1",
+    sortable: true
+  },
+  {
+    key: "ValoreProv2",
+    label: "ddt.valoreProv2",
+    sortable: true
+  },
+  {
+    key: "NumDDT",
+    label: "ddt.numDDT",
+    sortable: true
+  },
+  {
+    key: "SerieDDT",
+    label: "ddt.serieDDT",
+    sortable: true
+  },
+  {
+    key: "AnnoDDT",
+    label: "ddt.annoDDT",
+    sortable: true
+  },
+  {
+    key: "NumOrdine",
+    label: "ddt.numOrdine",
+    sortable: true
+  },
+  {
+    key: "SerieOrdine",
+    label: "ddt.serieOrdine",
+    sortable: true
+  },
+  {
+    key: "AnnoOrdine",
+    label: "ddt.annoOrdine",
+    sortable: true
+  },
+  {
+    key: "CodGruppo",
+    label: "ddt.codGruppo",
+    sortable: true
+  },
+  {
+    key: "CodSottogruppo",
+    label: "ddt.codSottogruppo",
+    sortable: true
+  },
+  {
+    key: "CodIVA",
+    label: "ddt.codIVA",
+    sortable: true
+  },
+  {
+    key: "CodCategoria",
+    label: "ddt.codCategoria",
+    sortable: true
+  }
+];
+
+export const QUERY_COLUMNS = [
+  {
+    key: "CodAnagra",
+    label: "registry.codanagra",
+    sortable: true
+  },
+  {
+    key: "Tipo",
+    label: "registry.tipo",
+    sortable: true
+  },
+  {
+    key: "DescrAnagra",
+    label: "registry.descranagra",
+    sortable: true
+  },
+  {
+    key: "PIVA",
+    label: "registry.piva",
+    sortable: true
+  },
+  {
+    key: "CF",
+    label: "registry.cf",
+    sortable: true
+  },
+  {
+    key: "ISONazione",
+    label: "registry.isonazione",
+    sortable: true
+  },
+  {
+    key: "DescrNazione",
+    label: "registry.descrnazione",
+    sortable: true
+  },
+  {
+    key: "CAP",
+    label: "registry.cap",
+    sortable: true
+  },
+  {
+    key: "Citta",
+    label: "registry.citta",
+    sortable: true
+  },
+  {
+    key: "DescrProvincia",
+    label: "registry.descrprovincia",
+    sortable: true
+  },
+  {
+    key: "Indirizzo",
+    label: "registry.indirizzo",
+    sortable: true
+  },
+  {
+    key: "Telefono",
+    label: "registry.telefono",
+    sortable: true
+  },
+  {
+    key: "Telefono2",
+    label: "registry.telefono2",
+    sortable: true
+  },
+  {
+    key: "Mail",
+    label: "registry.mail",
+    sortable: true
+  },
+  {
+    key: "Mail2",
+    label: "registry.mail2",
+    sortable: true
+  },
+  {
+    key: "FatturatoAnnoInCorso",
+    label: "registry.fatturatoAnnoInCorso",
+    sortable: true
+  },
+  {
+    key: "FatturatoAnnoPrec",
+    label: "registry.fatturatoAnnoPrec",
+    sortable: true
+  }
+]
+
 export const ITEM_COLUMNS = [
   { label: 'Order ID', key: 'orderId' },
   { label: 'Item ID', key: 'itemId' },
   { label: 'Product Name', key: 'productName' },
   { label: 'Quantity', key: 'quantity' },
   { label: 'Price', key: 'price' }
-]
+];
 
 export const ITEM_DATA_SOURCE = [
   { orderId: '5d2c8bf1f3d0', itemId: '8e4e0febc6f2', productName: 'Widget A', quantity: 1, price: 10.00 },

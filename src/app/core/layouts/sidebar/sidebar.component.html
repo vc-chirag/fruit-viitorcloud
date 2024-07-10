@@ -10,6 +10,50 @@
             <span class="ml-4"> {{ 'pageTitle.home' | translate }} </span>
           </a>
         </li>
+        <li routerLinkActive="active">
+          <a class="menu-item py-3.5" [routerLink]="[routes.ORDER]">
+            <app-svg-icon name="order" />
+            <span class="ml-4"> {{ 'pageTitle.order' | translate }} </span>
+          </a>
+        </li>
+        <li routerLinkActive="active" [ngClass]="{ 'open' : menuStates().settings }">
+          <a class="menu-item py-3.5" [routerLink]="[routes.REGISTRY]" (click)="toggleMenu(menuType.SETTINGS)"
+            (keyup)="toggleMenu(menuType.SETTINGS)">
+            <app-svg-icon name="registry" />
+            <span class="ml-4 mr-auto"> {{ 'pageTitle.registry' | translate }} </span>
+            <app-svg-icon name="edit" (click)="addNewTable()" />
+            <app-svg-icon [name]="menuStates().settings ? 'arrow_drop_up' : 'arrow_drop_down'" />
+          </a>
+          <ul class="sub-menu">
+            @for (tab of subTabs; track $index) {
+            <li>
+              <a class="menu-item py-3.5" [routerLink]="[routes.QUERY]" [queryParams]="{'tab': tab.tabName}"
+                routerLinkActive="active">
+                <app-svg-icon name="query" />
+                <span class="ml-4"> {{tab.tabName }} </span>
+              </a>
+            </li>
+            }
+            <!-- <li>
+              <a class="menu-item py-3.5" [routerLink]="[routes.QUERY]" routerLinkActive="active">
+                <app-svg-icon name="query" />
+                <span class="ml-4"> {{ 'pageTitle.query' | translate }} </span>
+              </a>
+            </li> -->
+          </ul>
+        </li>
+        <li routerLinkActive="active">
+          <a class="menu-item py-3.5" [routerLink]="[routes.DDT]">
+            <app-svg-icon name="tax" />
+            <span class="ml-4"> {{ 'pageTitle.ddt' | translate }} </span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a class="menu-item py-3.5" [routerLink]="[routes.INVOICE]">
+            <app-svg-icon name="invoice" />
+            <span class="ml-4"> {{ 'pageTitle.invoice' | translate }} </span>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

@@ -34,6 +34,7 @@
     "@ng-select/ng-select": "^12.0.6",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
+    "@supabase/supabase-js": "^2.44.2",
     "c3": "^0.7.20",
     "crypto-js": "^4.2.0",
     "intl-tel-input": "^18.5.3",
@@ -84,5 +85,10 @@
     "src/**/*.{js,ts,html}": [
       "eslint --fix"
     ]
+  },
+  "overrides": {
+    "@supabase/supabase-js": {
+      "@supabase/auth-js": "2.61.0"
+    }
   }
 }

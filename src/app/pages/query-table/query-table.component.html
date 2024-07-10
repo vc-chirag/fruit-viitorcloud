@@ -1,0 +1,10 @@
+<!-- <div class="flex justify-end p-2">
+  <app-svg-icon name="settings" class="cursor-pointer bg-primary text-white p-1 rounded" (click)="openDialog()" />
+</div> -->
+<div class="bg-white shadow-2sm p-4 lg:p-6 xl:p-8 2xl:p-10 rounded-10">
+  <div class="flex flex-col">
+    <app-vc-table name="pageTitle.categories" [columns]="columns()" [data]="orderList" [isLoading]="isLoading()"
+      [totalData]="totalOrders()" (pageChanged)="getQueriesData()">
+    </app-vc-table>
+  </div>
+</div>

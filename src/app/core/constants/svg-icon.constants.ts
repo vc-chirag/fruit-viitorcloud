@@ -90,5 +90,25 @@ export const SVG_ICONS = [
   {
     name: 'group',
     path: 'assets/icons/group.svg'
+  },
+  {
+    name: 'order',
+    path: 'assets/icons/order.svg'
+  },
+  {
+    name: 'registry',
+    path: 'assets/icons/registry.svg'
+  },
+  {
+    name: 'tax',
+    path: 'assets/icons/tax.svg'
+  },
+  {
+    name: 'invoice',
+    path: 'assets/icons/invoice.svg'
+  },
+  {
+    name: 'query',
+    path: 'assets/icons/query.svg'
   }
 ] as const;
