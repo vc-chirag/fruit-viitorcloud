@@ -21,8 +21,10 @@
             (keyup)="toggleMenu(menuType.SETTINGS)">
             <app-svg-icon name="registry" />
             <span class="ml-4 mr-auto"> {{ 'pageTitle.registry' | translate }} </span>
-            <app-svg-icon name="edit" (click)="addNewTable()" />
+            @if (subTabs.length) {
             <app-svg-icon [name]="menuStates().settings ? 'arrow_drop_up' : 'arrow_drop_down'" />
+            }
+            <app-svg-icon name="add" (click)="addNewTable($event)" />
           </a>
           <ul class="sub-menu">
             @for (tab of subTabs; track $index) {
@@ -34,12 +36,6 @@
               </a>
             </li>
             }
-            <!-- <li>
-              <a class="menu-item py-3.5" [routerLink]="[routes.QUERY]" routerLinkActive="active">
-                <app-svg-icon name="query" />
-                <span class="ml-4"> {{ 'pageTitle.query' | translate }} </span>
-              </a>
-            </li> -->
           </ul>
         </li>
         <li routerLinkActive="active">

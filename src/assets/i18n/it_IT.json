@@ -131,7 +131,8 @@
     "customerId": "ID cliente",
     "noData": "Dati non trovati",
     "tabName": "Nome Tab",
-    "columns": "Colonne"
+    "columns": "Colonne",
+    "tabConfig": "Configurazione Tab"
   },
   "pageTitle": {
     "login": "Accedi",

@@ -6,7 +6,7 @@ import { QUERY_COLUMNS } from '@constants/app.constants';
 import { STORAGE } from '@constants/storage.constant';
 import { SvgIconComponent } from '@layouts/svg-icon/svg-icon.component';
 import { TableColumn } from '@models/common.model';
-import { ColumnConfigComponent } from '@pages/column-config/column-config.component';
+import { AddNewTabComponent } from '@pages/add-new-tab/add-new-tab.component';
 import { StorageService } from '@services/storage.service';
 import { SupabaseService } from '@services/supabase.service';
 import { VcTableComponent } from '@vc-libs/vc-table/vc-table.component';
@@ -41,13 +41,8 @@ export class QueryTableComponent {
   }
 
   setColumns() {
-    const tabConfig = this.storageService.get(STORAGE.TAB_CONFIG);
-    if (tabConfig) {
-      const unfilteredTabs = JSON.parse(tabConfig);
-      const COLS = unfilteredTabs.find((tab) => tab.tabName === this.tab());
-      const query_col = QUERY_COLUMNS.filter((col) => COLS.columns.includes(col.key));
-      this.columns.set(query_col);
-    }
+    const query_col = this.getSavedTabColumns();
+    query_col.length && this.columns.set(query_col);
   }
 
   async getQueriesData() {
@@ -65,15 +60,26 @@ export class QueryTableComponent {
       });
   }
 
-  openDialog() {
-    const selectedColumns = this.getSavedColumns();
+  getSavedTabColumns() {
+    const tabConfig = this.storageService.get(STORAGE.TAB_CONFIG);
+    if (tabConfig) {
+      const unfilteredTabs = JSON.parse(tabConfig);
+      const COLS = unfilteredTabs.find((tab) => tab.tabName === this.tab());
+      return QUERY_COLUMNS.filter((col) => COLS.columns.includes(col.key));
+    } else {
+      return null;
+    }
+  }
 
-    const dialogRef = this.dialog.open(ColumnConfigComponent, {
+  openDialog() {
+    const selectedColumns = this.getSavedTabColumns();
+    const dialogRef = this.dialog.open(AddNewTabComponent, {
       data: {
         availableColumns: QUERY_COLUMNS,
-        selectedColumns: structuredClone(selectedColumns),
-        storageKey: STORAGE.QUERY_COL,
-        isQuery: true
+        selectedColumns: selectedColumns && structuredClone(selectedColumns).map(col => col.key),
+        storageKey: STORAGE.TAB_CONFIG,
+        tabName: this.tab(),
+        table: 'registry'
       },
       disableClose: true,
       width: '500px'
@@ -85,10 +91,5 @@ export class QueryTableComponent {
         this.columns.set(query_col);
       }
     });
-  }
-
-  getSavedColumns() {
-    const columns = this.storageService.get(STORAGE.QUERY_COL);
-    return columns;
   }
 }

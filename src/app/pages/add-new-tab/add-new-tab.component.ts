@@ -27,6 +27,7 @@ const components = [VcButtonComponent, SvgIconComponent, VcInputComponent];
 export class AddNewTabComponent {
   readonly tableLevels = TABLE_LEVELS;
   selectedOptions: string[] = this.data.selectedColumns;
+  newTabName = this.data.tabName;
 
   constructor(
     private storageService: StorageService,
@@ -37,16 +38,21 @@ export class AddNewTabComponent {
 
   saveConfig(tabName: string) {
     const tabConfig = this.storageService.get(STORAGE.TAB_CONFIG);
-    const existingTabs = JSON.parse(tabConfig);
+    const existingTabs = tabConfig ? JSON.parse(tabConfig) : [];
     const tabs_config = {
       tabName,
       columns: this.selectedOptions,
       table: this.data.table
-    }
-    if (existingTabs?.length) {
+    };
+
+    const tabIndex = existingTabs.findIndex((tab) => tab.tabName === tabName);
+
+    if (tabIndex > -1) {
+      existingTabs[tabIndex] = tabs_config;
+    } else {
       existingTabs.push(tabs_config);
     }
-    this.storageService.set(STORAGE.TAB_CONFIG, existingTabs ? JSON.stringify(existingTabs) : JSON.stringify([tabs_config]));
+    this.storageService.set(STORAGE.TAB_CONFIG, JSON.stringify(existingTabs));
 
     const dialogData = {
       selectedColumns: this.selectedOptions,

@@ -1,5 +1,9 @@
 export const SVG_ICONS = [
   {
+    name: 'add',
+    path: 'assets/icons/add.svg'
+  },
+  {
     name: 'arrow_drop_down',
     path: 'assets/icons/arrow_drop_down.svg'
   },
