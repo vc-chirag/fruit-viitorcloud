@@ -129,13 +129,13 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  addNewTable() {
-    const selectedColumns = this.storageService.get(STORAGE.QUERY_COL);
+  addNewTable(event: MouseEvent) {
+    event.stopPropagation();
+    event.preventDefault();
     const dialogRef = this.dialog.open(AddNewTabComponent,
       {
         data: {
           availableColumns: QUERY_COLUMNS,
-          selectedColumns: structuredClone(selectedColumns),
           table: 'registry'
         },
         disableClose: true,

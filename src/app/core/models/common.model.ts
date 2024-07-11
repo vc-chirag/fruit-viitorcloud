@@ -25,7 +25,8 @@ export interface ColumnConfigDialogData {
 }
 
 export interface AddNewTabDialogData extends ColumnConfigDialogData {
-  table: string
+  table: string;
+  tabName: string;
 }
 
 export interface SubTabs {
