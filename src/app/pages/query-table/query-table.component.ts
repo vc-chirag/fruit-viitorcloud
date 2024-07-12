@@ -27,7 +27,8 @@ export class QueryTableComponent {
   totalOrders = signal(0);
   columns = signal<TableColumn[]>(QUERY_COLUMNS);
   isLoading = signal(false);
-  tab = input<string>();
+  uuid = input<string>();
+  tabName = '';
 
   constructor(
     private supabaseService: SupabaseService,
@@ -64,8 +65,9 @@ export class QueryTableComponent {
     const tabConfig = this.storageService.get(STORAGE.TAB_CONFIG);
     if (tabConfig) {
       const unfilteredTabs = JSON.parse(tabConfig);
-      const COLS = unfilteredTabs.find((tab) => tab.tabName === this.tab());
-      return QUERY_COLUMNS.filter((col) => COLS.columns.includes(col.key));
+      const currentTab = unfilteredTabs.find((tab) => tab.uuid === this.uuid());
+      this.tabName = currentTab.tabName;
+      return QUERY_COLUMNS.filter((col) => currentTab.columns.includes(col.key));
     } else {
       return null;
     }
@@ -78,7 +80,8 @@ export class QueryTableComponent {
         availableColumns: QUERY_COLUMNS,
         selectedColumns: selectedColumns && structuredClone(selectedColumns).map(col => col.key),
         storageKey: STORAGE.TAB_CONFIG,
-        tabName: this.tab(),
+        tabName: this.tabName,
+        uuid: this.uuid(),
         table: 'registry'
       },
       disableClose: true,

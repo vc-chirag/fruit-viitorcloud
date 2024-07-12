@@ -1,30 +1,33 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API } from '@constants/api.constants';
 
 import { APP, MEDIA_EXTENSION, MEDIA_SIZE } from '@constants/app.constants';
 import { TOASTER_TYPE } from '@constants/app.enums';
 import {
-  APIResponseModel,
-  ActionToolbar,
   Media,
-  MediaUrl,
+  SubTabs,
   UploadMediaDetail
 } from '@models/common.model';
 import { ToasterService } from '@services/toaster.service';
-import { MemberService } from './member.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
   readonly imageType = APP.IMAGE_TYPE;
+  private sidebarTabs$ = new BehaviorSubject<SubTabs[]>(undefined);
+
+  sidebarTabs: Observable<SubTabs[]> =
+    this.sidebarTabs$.asObservable();
 
   constructor(
     private toasterService: ToasterService,
-    private httpClient: HttpClient,
-    private memberService: MemberService
-  ) {}
+  ) { }
+
+  setSidebarTabs(tabs: SubTabs[]) {
+    this.sidebarTabs$.next(tabs);
+  }
 
   async handleImageFileInput(
     event: Event,
@@ -136,13 +139,6 @@ export class UtilityService {
     return camelCaseWords.join('');
   }
 
-  getPresignedUrl(id: string, mediaDetail) {
-    return this.httpClient.get<APIResponseModel<MediaUrl>>(
-      `${API.GENERATE_URL}/${id}`,
-      { params: mediaDetail }
-    );
-  }
-
   createMediaDetail(id: string, url: string, file: File): UploadMediaDetail {
     return {
       id,
@@ -232,11 +228,9 @@ export class UtilityService {
     window.URL.revokeObjectURL(url);
   }
 
-  filterAndMapPermissionActions(permissionActions: {
-    [key: string]: ActionToolbar;
-  }): ActionToolbar[] {
-    return Object.entries(permissionActions)
-      .filter(([permission]) => this.memberService.hasPermission(permission))
-      .map(([, action]) => action);
+  getRandomStringWithDate() {
+    const randomString = Array.from({ length: 10 }, () => Math.floor(Math.random() * 9) + 1).join('');
+    const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    return randomString + date;
   }
 }
