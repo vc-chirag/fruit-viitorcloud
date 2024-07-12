@@ -132,7 +132,12 @@
     "noData": "Dati non trovati",
     "tabName": "Nome Tab",
     "columns": "Colonne",
-    "tabConfig": "Configurazione Tab"
+    "tabConfig": "Configurazione Tab",
+    "sameTabNameValidation": "La scheda con lo stesso nome esiste già.",
+    "tabAddedMsg": "Tab aggiunta con successo",
+    "tabUpdatedMsg": "Tab aggiornata con successo",
+    "tabNameValidation": "Nome scheda non può essere vuoto",
+    "columnsValidation": "Le colonne non possono essere vuote"
   },
   "pageTitle": {
     "login": "Accedi",

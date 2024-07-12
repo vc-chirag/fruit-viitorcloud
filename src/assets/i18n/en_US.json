@@ -132,7 +132,12 @@
     "noData": "Data not found",
     "tabName": "Tab Name",
     "columns": "Columns",
-    "tabConfig": "Tab Configuration"
+    "tabConfig": "Tab Configuration",
+    "sameTabNameValidation": "Tab with the same name already exists",
+    "tabAddedMsg": "Tab added  successfully",
+    "tabUpdatedMsg": "Tab updated successfully",
+    "tabNameValidation": "Tab Name cannot be empty",
+    "columnsValidation": "Columns cannot be empty"
   },
   "pageTitle": {
     "login": "Login",

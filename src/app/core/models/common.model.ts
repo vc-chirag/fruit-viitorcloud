@@ -27,12 +27,15 @@ export interface ColumnConfigDialogData {
 export interface AddNewTabDialogData extends ColumnConfigDialogData {
   table: string;
   tabName: string;
+  isNewTab: string;
+  uuid: string;
 }
 
 export interface SubTabs {
   table: string;
   tabName: string;
   columns: string[];
+  uuid: string;
 }
 
 export interface Entity {

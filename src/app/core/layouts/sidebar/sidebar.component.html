@@ -29,7 +29,7 @@
           <ul class="sub-menu">
             @for (tab of subTabs; track $index) {
             <li>
-              <a class="menu-item py-3.5" [routerLink]="[routes.QUERY]" [queryParams]="{'tab': tab.tabName}"
+              <a class="menu-item py-3.5" [routerLink]="[routes.QUERY]" [queryParams]="{'uuid': tab.uuid}"
                 routerLinkActive="active">
                 <app-svg-icon name="query" />
                 <span class="ml-4"> {{tab.tabName }} </span>

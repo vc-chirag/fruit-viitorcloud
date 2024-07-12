@@ -23,6 +23,7 @@ import { SubTabs } from '@models/common.model';
 import { AddNewTabComponent } from '@pages/add-new-tab/add-new-tab.component';
 import { BreadcrumbService } from '@services/breadcrumb.service';
 import { StorageService } from '@services/storage.service';
+import { UtilityService } from '@services/utility.service';
 
 const modules = [NgSelectModule, TranslateModule, FormsModule];
 
@@ -59,7 +60,8 @@ export class SidebarComponent implements OnInit {
     private storageService: StorageService,
     private breadcrumbService: BreadcrumbService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private utilityService: UtilityService
   ) { }
 
   get fullName() {
@@ -75,6 +77,7 @@ export class SidebarComponent implements OnInit {
       });
 
     this.navSetup(this.router.url);
+    this.saveTabs();
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
@@ -82,7 +85,9 @@ export class SidebarComponent implements OnInit {
       });
 
     this.currentLanguage = this.storageService.get(STORAGE.CURRENT_LANGUAGE_STATE_KEY);
-    this.setNestedTabs();
+    this.utilityService.sidebarTabs.subscribe(tab => {
+      tab && this.setNestedTabs();
+    })
   }
 
   setNestedTabs() {
@@ -90,6 +95,14 @@ export class SidebarComponent implements OnInit {
     if (tabConfigs) {
       const unfilteredTabs = JSON.parse(tabConfigs);
       this.subTabs = unfilteredTabs.filter((tab) => tab.table === 'registry');
+    }
+  }
+
+  saveTabs() {
+    const tabConfigs = this.storageService.get(STORAGE.TAB_CONFIG);
+    if (tabConfigs) {
+      const unfilteredTabs = JSON.parse(tabConfigs);
+      this.utilityService.setSidebarTabs(unfilteredTabs);
     }
   }
 
@@ -136,7 +149,8 @@ export class SidebarComponent implements OnInit {
       {
         data: {
           availableColumns: QUERY_COLUMNS,
-          table: 'registry'
+          table: 'registry',
+          isNewTab: true
         },
         disableClose: true,
         width: '500px'
