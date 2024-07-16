@@ -13,6 +13,16 @@ export class SupabaseService {
     this.supabase = createClient(environment.SUPABASE.url, environment.SUPABASE.key);
   }
 
+  getRecords(params): Observable<any> {
+    const ascendingOption = params.selectedSortOptions === 'asc' ? true : false;
+    const query = this.supabase.from(params.tblName).select(params.select).order(params.orderByColumn, { ascending: ascendingOption });
+    if (params.limitCondition && params.limitCondition !== null) {
+      query.limit(params.limitCondition);
+    }
+    return from(query)
+  }
+
+
   get(resource, select = "*", where = null, limit = null): Observable<any> {
     const query = this.supabase.from(resource).select(select);
     if (where !== null) {

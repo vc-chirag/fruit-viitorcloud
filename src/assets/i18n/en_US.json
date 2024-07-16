@@ -57,6 +57,8 @@
     "internalServerError": "Something went wrong, Please try again"
   },
   "common": {
+    "asc": "ASC",
+    "desc": "DESC",
     "searchForUsers": "Search in Name, Email",
     "logoAlt": "Vc Dynamic Widget",
     "noDataFound": "No record found",
@@ -86,6 +88,7 @@
     "yes": "Yes",
     "no": "No",
     "sortBy": "Sort By",
+    "sortValue": "Sort",
     "from": "From",
     "to": "To",
     "action": "Action",

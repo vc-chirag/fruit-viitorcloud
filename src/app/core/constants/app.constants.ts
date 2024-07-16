@@ -34,8 +34,8 @@ export const REGEX = {
 };
 
 export const SORT_OPTIONS = [
-  { value: 'desc', label: 'descending' },
-  { value: 'asc', label: 'ascending' }
+  { value: 'desc', label: 'Desc' },
+  { value: 'asc', label: 'Asc' }
 ];
 
 export const STATUS = [
@@ -922,87 +922,87 @@ export const INVOICE_COL = [
 
 export const QUERY_COLUMNS = [
   {
-    key: "CodAnagra",
+    key: "codanagra",
     label: "registry.codanagra",
     sortable: true
   },
   {
-    key: "Tipo",
+    key: "tipo",
     label: "registry.tipo",
     sortable: true
   },
   {
-    key: "DescrAnagra",
+    key: "descranagra",
     label: "registry.descranagra",
     sortable: true
   },
   {
-    key: "PIVA",
+    key: "piva",
     label: "registry.piva",
     sortable: true
   },
   {
-    key: "CF",
+    key: "cf",
     label: "registry.cf",
     sortable: true
   },
   {
-    key: "ISONazione",
+    key: "isonazione",
     label: "registry.isonazione",
     sortable: true
   },
   {
-    key: "DescrNazione",
+    key: "descrnazione",
     label: "registry.descrnazione",
     sortable: true
   },
   {
-    key: "CAP",
+    key: "cap",
     label: "registry.cap",
     sortable: true
   },
   {
-    key: "Citta",
+    key: "citta",
     label: "registry.citta",
     sortable: true
   },
   {
-    key: "DescrProvincia",
+    key: "descrprovincia",
     label: "registry.descrprovincia",
     sortable: true
   },
   {
-    key: "Indirizzo",
+    key: "indirizzo",
     label: "registry.indirizzo",
     sortable: true
   },
   {
-    key: "Telefono",
+    key: "telefono",
     label: "registry.telefono",
     sortable: true
   },
   {
-    key: "Telefono2",
+    key: "telefono2",
     label: "registry.telefono2",
     sortable: true
   },
   {
-    key: "Mail",
+    key: "mail",
     label: "registry.mail",
     sortable: true
   },
   {
-    key: "Mail2",
+    key: "mail2",
     label: "registry.mail2",
     sortable: true
   },
   {
-    key: "FatturatoAnnoInCorso",
+    key: "fatturatoannoincorso",
     label: "registry.fatturatoAnnoInCorso",
     sortable: true
   },
   {
-    key: "FatturatoAnnoPrec",
+    key: "fatturatoannoprec",
     label: "registry.fatturatoAnnoPrec",
     sortable: true
   }

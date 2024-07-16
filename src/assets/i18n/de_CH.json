@@ -57,6 +57,8 @@
     "internalServerError": "Etwas ist schiefgegangen, bitte erneut versuchen"
   },
   "common": {
+    "asc": "asc",
+    "desc": "desc",
     "logoAlt": "Vc Dynamic Widget",
     "noDataFound": "Keine Daten gefunden",
     "descending": "Älteste Einträge",
@@ -83,6 +85,7 @@
     "yes": "Ja",
     "no": "Nein",
     "sortBy": "Sortieren nach",
+    "sortValue": "Sort",
     "from": "Von",
     "to": "Bis",
     "title": "Titel",

@@ -57,6 +57,8 @@
     "internalServerError": "Qualcosa è andato storto, Riprova"
   },
   "common": {
+    "asc": "asc",
+    "desc": "desc",
     "searchForUsers": "Cerca in Nome, Email",
     "logoAlt": "Vc Dynamic Widget",
     "noDataFound": "Nessun record trovato",

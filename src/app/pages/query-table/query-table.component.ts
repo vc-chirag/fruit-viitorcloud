@@ -29,6 +29,7 @@ export class QueryTableComponent {
   isLoading = signal(false);
   uuid = input<string>();
   tabName = '';
+  tabData: any;
 
   constructor(
     private supabaseService: SupabaseService,
@@ -37,8 +38,12 @@ export class QueryTableComponent {
   ) { }
 
   ngOnInit(): void {
-    this.getQueriesData();
+    this.getRecords();
+  }
+
+  getRecords() {
     this.setColumns();
+    this.getQueriesData();
   }
 
   setColumns() {
@@ -46,31 +51,39 @@ export class QueryTableComponent {
     query_col.length && this.columns.set(query_col);
   }
 
-  async getQueriesData() {
-    this.isLoading.set(true);
-    this.orderList = new MatTableDataSource([]);
-    this.supabaseService.getCustomerData()
-      .pipe(
-        takeUntilDestroyed(this.#destroyRef),
-        finalize(() => this.isLoading.set(false))
-      )
-      .subscribe((data) => {
-        this.orderList = new MatTableDataSource(data);
-        this.totalOrders.set(data.length);
-        this.vcTable.updateTotalRecords(this.totalOrders());
-      });
-  }
-
   getSavedTabColumns() {
     const tabConfig = this.storageService.get(STORAGE.TAB_CONFIG);
     if (tabConfig) {
       const unfilteredTabs = JSON.parse(tabConfig);
-      const currentTab = unfilteredTabs.find((tab) => tab.uuid === this.uuid());
-      this.tabName = currentTab.tabName;
-      return QUERY_COLUMNS.filter((col) => currentTab.columns.includes(col.key));
+      this.tabData = unfilteredTabs.find((tab) => tab.uuid === this.uuid());
+      this.tabName = this.tabData.tabName;
+      return QUERY_COLUMNS.filter((col) => this.tabData.columns.includes(col.key));
     } else {
       return null;
     }
+  }
+
+  async getQueriesData() {
+    this.isLoading.set(true);
+    this.orderList = new MatTableDataSource([]);
+
+    const params = {
+      tblName: 'anagrafica',
+      selectCondition: '*',
+      whereCondition: null,
+      limitCondition: null,
+      orderByColumn: this.tabData?.selectedSortByOptions,
+      selectedSortOptions: this.tabData?.selectedSortOptions,
+    }
+    this.supabaseService.getRecords(params)
+      .pipe(
+        takeUntilDestroyed(this.#destroyRef),
+        finalize(() => this.isLoading.set(false))
+      ).subscribe((data) => {
+        this.orderList = new MatTableDataSource(data.data);
+        this.totalOrders.set(data.data.length);
+        this.vcTable.updateTotalRecords(this.totalOrders());
+      });
   }
 
   openDialog() {
@@ -81,6 +94,7 @@ export class QueryTableComponent {
         selectedColumns: selectedColumns && structuredClone(selectedColumns).map(col => col.key),
         storageKey: STORAGE.TAB_CONFIG,
         tabName: this.tabName,
+        tabData: this.tabData,
         uuid: this.uuid(),
         table: 'registry'
       },
@@ -92,6 +106,7 @@ export class QueryTableComponent {
         const dialogData = JSON.parse(result);
         const query_col = QUERY_COLUMNS.filter((col) => dialogData.selectedColumns.includes(col.key));
         this.columns.set(query_col);
+        this.getRecords();
       }
     });
   }

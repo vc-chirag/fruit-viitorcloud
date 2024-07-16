@@ -19,9 +19,12 @@ export interface DialogData {
 export interface ColumnConfigDialogData {
   availableColumns: TableColumn[];
   selectedColumns: string[];
+  selectedSortByOptions?: string;
+  selectedSortOptions?: string;
   tableLevel: number;
   isQuery?: boolean;
   storageKey?: string;
+  sortOptions?: string[];
 }
 
 export interface AddNewTabDialogData extends ColumnConfigDialogData {
@@ -29,6 +32,7 @@ export interface AddNewTabDialogData extends ColumnConfigDialogData {
   tabName: string;
   isNewTab: string;
   uuid: string;
+  tabData?: any;
 }
 
 export interface SubTabs {

@@ -3,7 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { TABLE_LEVELS } from '@constants/app.constants';
+import { SORT_OPTIONS, TABLE_LEVELS } from '@constants/app.constants';
 import { TOASTER_TYPE } from '@constants/app.enums';
 import { STORAGE } from '@constants/storage.constant';
 import { SvgIconComponent } from '@layouts/svg-icon/svg-icon.component';
@@ -29,7 +29,11 @@ const components = [VcButtonComponent, SvgIconComponent, VcInputComponent];
 export class AddNewTabComponent {
   readonly tableLevels = TABLE_LEVELS;
   selectedOptions: string[] = this.data.selectedColumns;
+  selectedSortByOptions = this.data?.tabData?.selectedSortByOptions;
+  selectedSortOptions = this.data?.tabData?.selectedSortOptions;
   newTabName = this.data.tabName;
+  tabData = this.data.tabData;
+  sortOptions = SORT_OPTIONS;
 
   constructor(
     private storageService: StorageService,
@@ -62,6 +66,8 @@ export class AddNewTabComponent {
     const new_tabs_config = {
       tabName,
       columns: this.selectedOptions,
+      selectedSortByOptions: this.selectedSortByOptions,
+      selectedSortOptions: this.selectedSortOptions,
       table: this.data.table,
       uuid
     };
