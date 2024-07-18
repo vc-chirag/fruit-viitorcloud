@@ -399,7 +399,7 @@ export const REGISTRY_COL = [
   },
   {
     key: "telefono",
-    label: "registry.telefono ",
+    label: "registry.telefono",
     sortable: true
   },
   {
